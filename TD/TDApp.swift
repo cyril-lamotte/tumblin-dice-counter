@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct TDApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      HomeView(playerList: PlayerList())
     }
+  }
 }
