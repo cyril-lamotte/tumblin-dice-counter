@@ -9,8 +9,10 @@ import SwiftUI
 
 struct PlayerForm: View {
   
+  // presentationMode is used to close the sheet after submit.
   @Environment(\.presentationMode) var presentationMode
   @State private var name: String = ""
+  @State private var color: Color = .red
   var onPlayerCreated: (Player) -> Void
 
   var body: some View {
@@ -33,15 +35,18 @@ struct PlayerForm: View {
       
       }
       
-//      VStack(alignment: .leading, spacing: 16) {
-//        Text("Couleur")
-//          .font(.title2)
-//
-//        ColorSelector()
-//      }
-//
+      VStack(alignment: .leading, spacing: 16) {
+        Text("Couleur")
+          .font(.title2)
+
+        // Call the color selector with the passed function.
+        ColorSelector { selectedColor in
+          color = selectedColor;
+        }
+      }
+
       Button {
-        let newPlayer = Player(name: name, color: .blue)
+        let newPlayer = Player(name: name, color: color)
         onPlayerCreated(newPlayer)
         presentationMode.wrappedValue.dismiss()
       } label: {

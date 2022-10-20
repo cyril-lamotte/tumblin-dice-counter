@@ -11,12 +11,14 @@ struct ColorSelector: View {
     
   @State var selectedColor: Color = .red
   private let colorsList = PlayerColor.allCases
-  
+  var onColorChange: (Color) -> Void
+
   var body: some View {
 
     HStack(alignment: .center, spacing: 24) {
       ForEach(colorsList, id: \.self) { diceColor in
         Button {
+          onColorChange(diceColor.diceColor)
           selectedColor = diceColor.diceColor
         } label: {
           VStack(spacing: 10) {
@@ -38,7 +40,9 @@ struct ColorSelector_Previews: PreviewProvider {
   @State static var previewSelectedColor: Color = .blue
 
   static var previews: some View {
-    ColorSelector()
+    ColorSelector { _ in
+      return
+    }
       .padding()
       .previewLayout(.sizeThatFits)
   }

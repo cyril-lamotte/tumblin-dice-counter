@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct Panel: View {
-  
-    let panelTitle: String
-    let panelIcon: String
-    let panelText: String
-  
-    var body: some View {
-      VStack(
-        alignment: .leading,
-        spacing: 24
-      ) {
-        HStack {
-          Image(systemName: panelIcon)
-            .foregroundColor(.accentColor)
-          Text(panelTitle)
-            .foregroundColor(.accentColor)
-        }
-        .font(.title)
 
-        Text(panelText)
-          .font(.custom("input", fixedSize: 18))
-          .lineSpacing(5)
-          .foregroundColor(Color(white: 0.4))
+  let panelTitle: String
+  let panelIcon: String
+  let panelText: String
+
+  var body: some View {
+    VStack(
+      alignment: .leading,
+      spacing: 24
+    ) {
+      HStack {
+        Image(systemName: panelIcon)
+          .foregroundColor(.accentColor)
+        Text(panelTitle)
+          .foregroundColor(.accentColor)
       }
-      .frame(maxWidth: .infinity, alignment: .leading)
-      .padding(24)
-      .background(Color("light-bg"))
-      .cornerRadius(10)
+      .font(.title)
 
+      Text(panelText)
+        .font(.custom("input", fixedSize: 18))
+        .lineSpacing(5)
+        .foregroundColor(Color(white: 0.4))
     }
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .padding(24)
+    .background(Color("light-bg"))
+    .cornerRadius(10)
+
+  }
 
 }
 

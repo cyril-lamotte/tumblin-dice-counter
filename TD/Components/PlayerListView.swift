@@ -9,16 +9,12 @@ import SwiftUI
 
 struct PlayerListView: View {
   
-  var playerList: PlayerList
+  @ObservedObject var playerList: PlayerList
 
   var body: some View {
-
+        
     let sortedArray = playerList.players.sorted {
       $0.score > $1.score
-    }
-    
-    if playerList.players.isEmpty {
-      Text("Ajoutez un joueur")
     }
 
     VStack(alignment: .leading) {
@@ -47,8 +43,6 @@ struct PlayerList_Previews: PreviewProvider {
         Player(name: "Nora", color: Color("green"), score: 2),
         Player(name: "Vanessa", color: .blue),
       ]))
-      
-      Panel(panelTitle: "ttt", panelIcon: "dice", panelText: "lorem")
       
       PlayerListView(playerList: PlayerList())
     }
